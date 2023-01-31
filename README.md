@@ -1,10 +1,4 @@
-# base_bootstrap_project
-
-This template is made for a quick start for projects made in symfony 6 with the use of Bootstrap and Webpack Encore.
-
-## Installation
-
-Run :
+# Base_Symfony_6
 
 - composer install
 - yarn install
