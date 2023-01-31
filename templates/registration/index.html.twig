@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<main>
+		<h1>Register</h1>
+		{{ form_start(registrationForm) }}
+		<button type="submit">Register</button>
+		{{ form_end(registrationForm) }}
+		<a href="{{ path('app_login') }}" class="">Back</a>
+	</div>
+</main>{% endblock %}
