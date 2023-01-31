@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hobbie{% endblock %}
+
+{% block body %}
+    <h1>Hobbie</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ hobbie.id }}</td>
+            </tr>
+            <tr>
+                <th>Nom</th>
+                <td>{{ hobbie.Nom }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ hobbie.Description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_hobbie_index') }}">back to list</a>
+
+    <a href="{{ path('app_admin_hobbie_edit', {'id': hobbie.id}) }}">edit</a>
+
+    {{ include('admin_hobbie/_delete_form.html.twig') }}
+{% endblock %}

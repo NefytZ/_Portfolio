@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Competence index{% endblock %}
+
+{% block body %}
+    <h1>Competence index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Niveau</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for competence in competences %}
+            <tr>
+                <td>{{ competence.id }}</td>
+                <td>{{ competence.Nom }}</td>
+                <td>{{ competence.Niveau }}</td>
+                <td>
+                    <a href="{{ path('app_admin_competence_show', {'id': competence.id}) }}">show</a>
+                    <a href="{{ path('app_admin_competence_edit', {'id': competence.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_competence_new') }}">Create new</a>
+{% endblock %}
