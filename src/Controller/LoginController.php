@@ -28,4 +28,5 @@ class LoginController extends AbstractController
     public function logout(): void
     {
     }
+
 }

@@ -1,16 +1,11 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}
+	{{parent()}}
+	| Accueil
 {% endblock %}
 
 {% block body %}
-	<div class="example-wrapper text-center">
-		<h1>Hello wilder !!✅</h1>
+{% include "/components/_navbar.html.twig" %}
 
-		This friendly message is coming from:
-		<ul>
-			<a href="{{ path("app_logout") }}">Disconnect</a>
-		</ul>
-		
-	</div>
-{% endblock %}
+{% endblock body %}

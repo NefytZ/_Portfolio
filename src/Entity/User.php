@@ -2,13 +2,26 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
-use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
 
+use DateTime;
+use App\Entity\Hobbie;
+use DateTimeInterface;
+use App\Entity\Formation;
+use App\Entity\Competence;
+use App\Entity\Experience;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
+use App\Repository\UserRepository;
+use Doctrine\Common\Collections\Collection;
+use Symfony\Component\HttpFoundation\File\File;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Ignore;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
+
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
 {
@@ -17,6 +30,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?int $id = null;
 
+
+    #[Assert\Length(max: 180)]
+    #[Assert\NotBlank(message: 'L\'email est obligatoire.')]
     #[ORM\Column(length: 180, unique: true)]
     private ?string $email = null;
 
@@ -29,11 +45,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[Assert\Length(max: 255)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank(message:'Le nom est obligatoire.')]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[Assert\Length(max: 255)]
+    #[Assert\Type('string')]
+    #[Assert\NotBlank(message: 'Le prénom est obligatoire.')]
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
+
+    #[Assert\File(
+        maxSize: '2M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp']
+    )]
+    #[Vich\UploadableField(mapping: "avatars", fileNameProperty: "userPicture")]
+    #[Ignore]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $userPicture = null;
+
+    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
+    private ?DatetimeInterface $updatedAt = null;
 
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Experience::class)]
     private Collection $experiences;
@@ -46,6 +82,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\OneToMany(mappedBy: 'User', targetEntity: Hobbie::class)]
     private Collection $hobbies;
+
+    
 
     public function __construct()
     {
@@ -267,5 +305,61 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         }
 
         return $this;
+    }
+
+    public function getuserPicture(): ?string
+    {
+        return $this->userPicture;
+    }
+
+    public function setuserPicture(?string $userPicture): self
+    {
+        $this->userPicture = $userPicture;
+
+        return $this;
+    }
+
+    public function setImageFile(File $image = null): User
+    {
+        $this->imageFile = $image;
+        if ($image) {
+            $this->updatedAt = new DateTime('now');
+        }
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+
+
+    public function __serialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'email' => $this->email,
+            'password' => $this->password,
+        ];
+    }
+
+
+    public function _tostring():string
+    {
+
+        return $this->nom;
     }
 }
