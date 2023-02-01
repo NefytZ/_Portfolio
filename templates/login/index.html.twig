@@ -1,23 +1,26 @@
 {% extends 'base.html.twig' %}
 
-{# ... #}
-
 {% block body %}
+{% include "/components/_navbar.html.twig" %}
 	{% if error %}
 		<div>{{ error.messageKey|trans(error.messageData, 'security') }}</div>
 	{% endif %}
 
-	<form action="{{ path('app_login') }}" method="post">
-		<label for="username">Email:</label>
-		<input type="text" id="username" name="_username" value="{{ last_username }}">
-
-		<label for="password">Password:</label>
-		<input type="password" id="password" name="_password">
-		<input
-		type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-		{# If you want to control the URL the user is redirected to on success
-				        <input type="hidden" name="_target_path" value="/account"> #}
-
-		<button type="submit">login</button>
+	<form class="d-flex gap-3" action="{{ path('app_login') }}" method="post">
+		<div class="mb-3">
+		<label for="username" class="form-label">Email:</label>
+		<input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}">
+		</div>
+		<div class="mb-3">
+		<label for="password" class="form-label">Password:</label>
+		<input type="password" class="form-control" id="password" name="_password">
+		</div>
+		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+		<input type="hidden" name="app_admin" value="/account">
+		<div class="mb-3">
+		<button type="submit" class="btn btn-secondary">Login</button>
+		</div>
 	</form>
 {% endblock %}
+
+
