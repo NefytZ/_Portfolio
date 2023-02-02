@@ -11,11 +11,11 @@
 	<div class="container d-flex justify-content-center align-items-center mt-5 gap-3">
 	<form class="form" action="{{ path('app_login') }}" method="post">
 		<div class="mb-3 p-2">
-		<label for="username" class="form-label text-light fs-3">Email:</label>
+		<label for="username" class="form-label text-light fs-3 fw-bold">Email:</label>
 		<input type="text" class="form-control" id="username" name="_username" value="{{ last_username }}">
 		</div>
 		<div class="mb-3 p-2">
-		<label for="password" class="form-label text-light fs-3">Password:</label>
+		<label for="password" class="form-label text-light fs-3 fw-bold">Password:</label>
 		<input type="password" class="form-control" id="password" name="_password">
 		</div>
 		<input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
