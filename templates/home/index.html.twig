@@ -5,7 +5,12 @@
 	| Accueil
 {% endblock %}
 
-{% block body %}
-{% include "/components/_navbar.html.twig" %}
+{% block stylesheets %}
+	{{parent()}}
+{% endblock %}
 
-{% endblock body %}
+{% block body %}
+{% include 'components/_cardprofiltop.html.twig' %}
+
+
+{% endblock %}
