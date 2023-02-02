@@ -4,11 +4,12 @@ namespace App\DataFixtures;
 
 use App\Entity\Competence;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\Filesystem\Filesystem;
 
 
-class CompetenceFixtures extends Fixture
+class CompetenceFixtures extends Fixture implements DependentFixtureInterface
 {
     public const Competences = [
         'PHP' => ' ⭐ ⭐ ⭐ ⭐ ⭐',
@@ -32,11 +33,19 @@ class CompetenceFixtures extends Fixture
         $competence = new Competence();
         $competence->setNom($name);
         $competence->setNiveau($niveau);
-       
+        $competence->setUser($this->getReference('user_1'));
         $manager->persist($competence);
         }
 
         $manager->flush();
+    }
+
+
+    public function getDependencies()
+    {
+        return [
+            UserFixtures::class,
+        ];
     }
 }
 

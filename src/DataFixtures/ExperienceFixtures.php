@@ -6,10 +6,11 @@ use DateTime;
 use App\Entity\Experience;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
 
-class ExperienceFixtures extends Fixture
+class ExperienceFixtures extends Fixture implements DependentFixtureInterface
 {
     public const Experiences = [
         'Developpeur' => ['Wild Code School', '2014-01-01', '2014-12-31', 'Projet CV perso fictif via Git), Capture the flag,
@@ -34,11 +35,18 @@ class ExperienceFixtures extends Fixture
         $experience->setDateDebut(new DateTime($details[1]));
         $experience->setDateFin(new DateTime($details[2]));
         $experience->setDescription($details[3]);
-
+        $experience->setUser($this->getReference('user_1'));
         $manager->persist($experience);
         }
 
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            UserFixtures::class,
+        ];
     }
 }
 
