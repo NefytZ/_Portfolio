@@ -4,12 +4,5 @@
 <div class="containerhello d-flex justify-content-center">
     <div class="title fs-1 fw-bold pt-3">Bienvenue sur mes Compétences</div>
 </div>
-<div class="containercompetence w-50 pb-3">
-    <div class="title fs-3">Compétences</div>
-    <div class="competencecontent">
-        {% for competence in competences %}
-        <h3>{{competence.nom}}</h3>
-        <h3>{{competence.niveau}}</h3>
-        {% endfor %}
-    </div>
+{% include "components/_cardforcompetences.html.twig" %}
 {% endblock %}
