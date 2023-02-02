@@ -1,0 +1,22 @@
+.mycarousel {
+    width: 70vw;
+    overflow: hidden;
+    bottom:25vh;
+    left:5vh;
+}
+
+
+
+@media only screen and (min-width: 768px) and (max-width: 988px) {
+.mycarousel {
+    display:none;
+}
+  }
+
+
+  @media only screen and (max-width: 767px) {
+    .mycarousel {
+        display:none;
+    }
+  }
+

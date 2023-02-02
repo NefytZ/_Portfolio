@@ -24,7 +24,7 @@ class UserFixtures extends Fixture
         $hashedPassword = $this->passwordHasher->hashPassword($admin, 'adminpassword');
         $admin->setPassword($hashedPassword);
         $admin->setPrenom('Thyphen');
-        $admin->setNom('Doe');
+        $admin->setNom('Merigot');
         $this->addReference('user_1', $admin);
         $manager->persist($admin);
         $manager->flush();
