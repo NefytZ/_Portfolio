@@ -6,10 +6,11 @@ use DateTime;
 use App\Entity\Formation;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 use Symfony\Component\Filesystem\Filesystem;
 
 
-class FormationFixtures extends Fixture
+class FormationFixtures extends Fixture implements DependentFixtureInterface
 {
     public const Formations = [
         'WAB - Le digital coopératif' => ['Gestion d\'une page commerciale', '2014-01-01', '2014-12-31', 'Une formation pour apprendre à gérer une page commerciale'],
@@ -32,11 +33,19 @@ class FormationFixtures extends Fixture
         $formation->setDateDebut(new DateTime($details[1]));
         $formation->setDateFin(new DateTime($details[2]));
         $formation->setDescription($details[3]);
-
+        $formation->setUser($this->getReference('user_1'));
         $manager->persist($formation);
         }
 
         $manager->flush();
+    }
+
+
+    public function getDependencies()
+    {
+        return [
+            UserFixtures::class,
+        ];
     }
 }
 
