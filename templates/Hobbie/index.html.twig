@@ -1,14 +1,8 @@
-{% extends 'base.html.twig' %} 
+{% extends 'base.html.twig' %}
 
-{% block body %}
-<div class="containerhello d-flex justify-content-center">
-    <div class="title fs-1 fw-bold pt-3">Bienvenue sur mes Hobbies</div>
-</div>
-<div class="containerhobbie w-50 pb-3">
-    <div class="title fs-3">Hobbies</div>
-    <div class="hobbiecontent">
-        {% for hobbie in hobbies %}
-              <h3>{{hobbie.nom}}</h3>
-        <h3>{{hobbie.description}}</h3>
-        {% endfor %}
+    {% block body %}
+    <div class="containerhello d-flex justify-content-center">
+        <div class="title fs-1 fw-bold pt-3">Bienvenue sur mes Hobbies</div>
+    </div>
+{% include "components/_cardforhobbie.html.twig" %}
 {% endblock %}

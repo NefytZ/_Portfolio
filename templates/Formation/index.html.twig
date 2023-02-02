@@ -1,18 +1,8 @@
-{% extends 'base.html.twig' %} 
+{% extends 'base.html.twig' %}
 
-{% block body %}
-<div class="containerhello d-flex justify-content-center">
-    <div class="title fs-1 fw-bold pt-3">Bienvenue sur mes Formations</div>
-</div>
-<div class="containerformation w-50 pb-3">
-    <div class="title fs-3">Formation</div>
-    <div class="formationcontent">
-        {% for formation in formations %}
-               <h3>Nom de l'entreprise : {{formation.nomEtablissement}}</h3>
-                <p>Diplome obtenu : {{formation.diplome}}</p>
-                <p>Date de début : {{formation.dateDebut| date('Y-m-d')}}</p>
-                <p>Date de fin : {{formation.dateFin| date('Y-m-d')}}</p>
-                <p>Missions : {{formation.description}}</p>
-        {% endfor %}
+    {% block body %}
+    <div class="containerhello d-flex justify-content-center">
+        <div class="title fs-1 fw-bold pt-3">Bienvenue sur mes Formations</div>
     </div>
+{% include "components/_cardforformation.html.twig" %}
 {% endblock %}

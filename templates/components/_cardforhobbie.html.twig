@@ -1,0 +1,12 @@
+{% for hobbie in hobbies %}
+<div class="container-fluid cardhob container d-flex">
+  <div class="card cardstyle bg-primary mb-2 mt-3 w-50 m-auto" style="width: 10rem;">
+    <img src="https://images.unsplash.com/photo-1556888335-95371827d5fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2831&q=80" class="card-img-top" alt="...">
+    <div class="card-body">
+        <p class="card-text fw-bold text-intermediate">Hobbie : {{hobbie.nom}}</p>
+        <p class="card-text fw-bold text-intermediate">Niveau : {{hobbie.description}}</p>
+    </div>
+      <a href="#" class="btn btn-secondary rounded-pill w-40 m-auto mb-3">Voir plus</a>
+  </div>
+</div>
+{% endfor %}
