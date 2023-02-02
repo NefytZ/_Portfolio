@@ -1,36 +1,35 @@
     <div class="row">
-      <div class="col-lg-4">
+      <div class="col-lg-3">
         <!-- Component -->
         <div class="card shadow">
           <div class="card-body bg-primary">
             <div class="d-flex justify-content-center">
-              <a href="#" class="avatar avatar-xl w-30 h-30 rounded-circle">
-                <img alt="..." src="https://media.istockphoto.com/id/1364105164/photo/hologram-human-head-deep-learning-and-artificial-intelligence-abstract-background.jpg?b=1&s=170667a&w=0&k=20&c=i9-oulHCR0LCxqzqUW2Q7bKt3RrdbCZU0OXqXV2gw-o=">
+              <a href="#" class="avatar avatar-xl w-30 h-50">
+                <img alt="profil avatar" src="https://media.istockphoto.com/id/1364105164/photo/hologram-human-head-deep-learning-and-artificial-intelligence-abstract-background.jpg?b=1&s=170667a&w=0&k=20&c=i9-oulHCR0LCxqzqUW2Q7bKt3RrdbCZU0OXqXV2gw-o=">
               </a>
             </div>
             <div class="text-center my-6">
               <!-- Title -->
-              <a href="" class="d-block h5 mb-0">John Doe</a>
+              <a class="d-block h3 mb-0 text-decoration-none fs-3">{{ app.user ? app.user.nom : "Doe" }}</a> 
               <!-- Subtitle -->
-              <span class="d-block text-sm text-muted">JohnDoe@portfolio.com</span>
+              <a class="d-block h5 mb-0 p-3 text-secondary text-decoration-none fs-2">{{ app.user ? app.user.prenom : "Thyphen" }}</a> 
             </div>
             <!-- Stats -->
             <div class="d-flex">
               <div class="col-4 text-center">
-                <a href="#" class="h4 font-bolder mb-0">Web</a>
-                <span class="d-block text-sm">Developper</span>
+                <a href="#" class="h4 font-bolder mb-0 text-decoration-none">Web</a>
+                <span class="d-block text-sm text-secondary">Developper</span>
               </div>
               <div class="col-4 text-center">
-                <a href="#" class="h4 font-bolder mb-0">Ui UX</a>
-                <span class="d-block text-sm">Design</span>
+                <a href="#" class="h4 font-bolder mb-0 text-decoration-none">Ui UX</a>
+                <span class="d-block text-sm text-secondary">Design</span>
               </div>
               <div class="col-4 text-center">
-                <a href="#" class="h4 font-bolder mb-0">Digital</a>
-                <span class="d-block text-sm">Marketing</span>
+                <a href="#" class="h4 font-bolder mb-0 text-decoration-none">Digital</a>
+                <span class="d-block text-sm text-secondary">Marketing</span>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
