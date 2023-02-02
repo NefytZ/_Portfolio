@@ -7,7 +7,8 @@
 <div class="containerhobbie w-50 pb-3">
     <div class="title fs-3">Hobbies</div>
     <div class="hobbiecontent">
-        <h3>Informatique(dev..)</h3>
-        <h3>Musique.. passion</h3>
-        <h3>Series TV, Netflix GOAT</h3>
+        {% for hobbie in hobbies %}
+              <h3>{{hobbie.nom}}</h3>
+        <h3>{{hobbie.description}}</h3>
+        {% endfor %}
 {% endblock %}
