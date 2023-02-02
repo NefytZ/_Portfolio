@@ -9,8 +9,11 @@
 	{{parent()}}
 {% endblock %}
 
-{% block body %}
+{% block header %}
 {% include 'components/_cardprofiltop.html.twig' %}
+{% endblock %}
 
-
+{% block body %}
+{% include 'components/_presentationprofil.html.twig' %}
+{% include "components/_carouselhome.html.twig" %}
 {% endblock %}
