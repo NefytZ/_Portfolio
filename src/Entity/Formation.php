@@ -32,6 +32,9 @@ class Formation
     #[ORM\ManyToOne(inversedBy: 'formations')]
     private ?User $User = null;
 
+    #[ORM\ManyToOne(inversedBy: 'formations')]
+    private ?Competence $Competence = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Formation
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    public function getCompetence(): ?Competence
+    {
+        return $this->Competence;
+    }
+
+    public function setCompetence(?Competence $Competence): self
+    {
+        $this->Competence = $Competence;
 
         return $this;
     }

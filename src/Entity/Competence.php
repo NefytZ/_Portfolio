@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\CompetenceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CompetenceRepository::class)]
@@ -21,6 +23,18 @@ class Competence
 
     #[ORM\ManyToOne(inversedBy: 'competences')]
     private ?User $User = null;
+
+    #[ORM\OneToMany(mappedBy: 'competence', targetEntity: Experience::class)]
+    private Collection $experiences;
+
+    #[ORM\OneToMany(mappedBy: 'Competence', targetEntity: Formation::class)]
+    private Collection $formations;
+
+    public function __construct()
+    {
+        $this->experiences = new ArrayCollection();
+        $this->formations = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -59,6 +73,66 @@ class Competence
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Experience>
+     */
+    public function getExperiences(): Collection
+    {
+        return $this->experiences;
+    }
+
+    public function addExperience(Experience $experience): self
+    {
+        if (!$this->experiences->contains($experience)) {
+            $this->experiences->add($experience);
+            $experience->setCompetence($this);
+        }
+
+        return $this;
+    }
+
+    public function removeExperience(Experience $experience): self
+    {
+        if ($this->experiences->removeElement($experience)) {
+            // set the owning side to null (unless already changed)
+            if ($experience->getCompetence() === $this) {
+                $experience->setCompetence(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Formation>
+     */
+    public function getFormations(): Collection
+    {
+        return $this->formations;
+    }
+
+    public function addFormation(Formation $formation): self
+    {
+        if (!$this->formations->contains($formation)) {
+            $this->formations->add($formation);
+            $formation->setCompetence($this);
+        }
+
+        return $this;
+    }
+
+    public function removeFormation(Formation $formation): self
+    {
+        if ($this->formations->removeElement($formation)) {
+            // set the owning side to null (unless already changed)
+            if ($formation->getCompetence() === $this) {
+                $formation->setCompetence(null);
+            }
+        }
 
         return $this;
     }
