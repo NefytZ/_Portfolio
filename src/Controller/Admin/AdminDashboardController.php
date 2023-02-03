@@ -44,13 +44,13 @@ class AdminDashboardController extends AbstractDashboardController
             MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
 
             MenuItem::section('Portfolio'),
-            MenuItem::linkToCrud('Experiences', 'fa fa-tags', Experience::class),
-            MenuItem::linkToCrud('Formations', 'fa fa-tags', Formation::class),
-            MenuItem::linkToCrud('Compétences', 'fa fa-tags', Competence::class),
-            MenuItem::linkToCrud('Hobbies', 'fa fa-tags', Hobbie::class),
+            MenuItem::linkToCrud('Experiences', 'fa fa-briefcase', Experience::class),
+            MenuItem::linkToCrud('Formations', 'fa fa-certificate', Formation::class),
+            MenuItem::linkToCrud('Compétences', 'fa fa-book', Competence::class),
+            MenuItem::linkToCrud('Hobbies', 'fa fa-refresh', Hobbie::class),
 
             MenuItem::section('Utilisateur'),
-            MenuItem::linkToCrud('Thyphen', 'fa fa-tags', User::class)
+            MenuItem::linkToCrud('Thyphen', 'fa fa-address-card', User::class)
         ];
     }
 }
