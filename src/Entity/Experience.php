@@ -32,6 +32,9 @@ class Experience
     #[ORM\ManyToOne(inversedBy: 'experiences')]
     private ?User $User = null;
 
+    #[ORM\ManyToOne(inversedBy: 'experiences')]
+    private ?Competence $competence = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -105,6 +108,18 @@ class Experience
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    public function getCompetence(): ?Competence
+    {
+        return $this->competence;
+    }
+
+    public function setCompetence(?Competence $competence): self
+    {
+        $this->competence = $competence;
 
         return $this;
     }
