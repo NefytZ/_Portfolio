@@ -34,6 +34,8 @@ class CompetenceFixtures extends Fixture implements DependentFixtureInterface
         $competence->setNom($name);
         $competence->setNiveau($niveau);
         $competence->setUser($this->getReference('user_1'));
+        $competence->setExperience($this->getReference('competence_1'));
+        $competence->setFormation($this->getReference('formation_1'));
         $manager->persist($competence);
         }
 
@@ -45,6 +47,7 @@ class CompetenceFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             UserFixtures::class,
+            ExperienceFixtures::class,
         ];
     }
 }

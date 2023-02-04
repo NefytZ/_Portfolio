@@ -34,7 +34,7 @@ class Competence
 
     public function __construct()
     {
-        $this->experience = new ArrayCollection();
+       
     }
 
     public function getId(): ?int
