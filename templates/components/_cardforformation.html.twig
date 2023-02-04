@@ -1,17 +1,28 @@
-<div class="d-flex">
-{% for formation in formations %}
-<div class="container-fluid cardexpcontainer d-flex flex-wrap">
-<div class="card cardstyle bg-primary mt-4 w-75 m-auto">
-    <img src="https://images.unsplash.com/photo-1556888335-95371827d5fb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2831&q=80" class="card-img-top" alt="...">
-    <div class="card-body">
-      <h5 class="card-title">Nom de l'entreprise : {{formation.nomEtablissement}}</h5>
-      <p class="card-text fw-bold text-secondary"> <p>Diplome obtenu : {{formation.diplome}}</p></p>
-      <p class="card-text fw-bold text-intermediate">Date de début : {{formation.dateDebut| date('Y-m-d')}}</p>
-      <p class="card-text fw-bold text-intermediate">Date de fin : {{formation.dateFin| date('Y-m-d')}}</p>
-      <p class="card-text fw-bold text-intermediate">Description : {{formation.description}}</p>
-    </div>
-      <a href="#" class="btn btn-secondary rounded-pill w-40 m-auto mb-3">Voir plus</a>
+5<div class="d-flex">
+  {% for formation in formations %}
+  <div class="container">
+    <div class="card bg-transparent mt-3">
+      <div class="face face1">
+        <div class="content">
+          <img src="https://image.flaticon.com/icons/svg/681/681611.svg" alt="">
+          <h5 class="card-title text-light text-center">{{formation.nomEtablissement}}</h5>
+        </div>
+      </div>
+      <div class="face face2">
+        <div class="content">
+          <p class="card-text fw-bold text-intermediate">Date de début : {{formation.dateDebut| date('Y-m-d')}}</p>
+          <p class="card-text fw-bold text-intermediate">Date de fin : {{formation.dateFin| date('Y-m-d')}}</p>
+        </div>
+    
+          <a href="{{ path('app_competence') }}" class="btn btn-secondary rounded-pill w-40 m-auto mb-3">Voir plus</a>
+        </div>
+      <div class="face face2 bg-intermediate">
+        <div class="content p-0">
+          <p class="card-text fw-bold text-black">{{formation.diplome}}</p>
+          <p class="card-text fw-bold text-light">{{formation.description}}</p>
+        </div>
     </div>
   </div>
-  {% endfor %}
-</div>
+  </div>
+      {% endfor %}
+  </div>
