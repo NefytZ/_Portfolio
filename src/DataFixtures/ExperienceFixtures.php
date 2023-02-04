@@ -36,6 +36,7 @@ class ExperienceFixtures extends Fixture implements DependentFixtureInterface
         $experience->setDateFin(new DateTime($details[2]));
         $experience->setDescription($details[3]);
         $experience->setUser($this->getReference('user_1'));
+        $this->setReference('competence_1', $experience);
         $manager->persist($experience);
         }
 
