@@ -34,12 +34,9 @@ class Formation
     #[ORM\ManyToOne(inversedBy: 'formations')]
     private ?User $User = null;
 
-    #[ORM\ManyToMany(targetEntity: Competence::class, inversedBy: 'formations')]
-    private Collection $Competence;
 
     public function __construct()
     {
-        $this->Competence = new ArrayCollection();
     }
 
 
@@ -120,28 +117,5 @@ class Formation
         return $this;
     }
 
-    /**
-     * @return Collection<int, Competence>
-     */
-    public function getCompetence(): Collection
-    {
-        return $this->Competence;
-    }
-
-    public function addCompetence(Competence $competence): self
-    {
-        if (!$this->Competence->contains($competence)) {
-            $this->Competence->add($competence);
-        }
-
-        return $this;
-    }
-
-    public function removeCompetence(Competence $competence): self
-    {
-        $this->Competence->removeElement($competence);
-
-        return $this;
-    }
 
 }

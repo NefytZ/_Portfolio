@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use App\Entity\FormationCompetence;
 
 #[ORM\Entity(repositoryClass: ExperienceRepository::class)]
 class Experience
@@ -34,12 +35,10 @@ class Experience
     #[ORM\ManyToOne(inversedBy: 'experiences')]
     private ?User $User = null;
 
-    #[ORM\ManyToMany(targetEntity: Competence::class, inversedBy: 'experiences')]
-    private Collection $Competence;
 
     public function __construct()
     {
-        $this->Competence = new ArrayCollection();
+    
     }
 
     public function getId(): ?int
@@ -115,30 +114,6 @@ class Experience
     public function setUser(?User $User): self
     {
         $this->User = $User;
-
-        return $this;
-    }
-
-    /**
-     * @return Collection<int, Competence>
-     */
-    public function getCompetence(): Collection
-    {
-        return $this->Competence;
-    }
-
-    public function addCompetence(Competence $competence): self
-    {
-        if (!$this->Competence->contains($competence)) {
-            $this->Competence->add($competence);
-        }
-
-        return $this;
-    }
-
-    public function removeCompetence(Competence $competence): self
-    {
-        $this->Competence->removeElement($competence);
 
         return $this;
     }

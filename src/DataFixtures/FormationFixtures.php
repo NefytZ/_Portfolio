@@ -34,6 +34,8 @@ class FormationFixtures extends Fixture implements DependentFixtureInterface
         $formation->setDateFin(new DateTime($details[2]));
         $formation->setDescription($details[3]);
         $formation->setUser($this->getReference('user_1'));
+        //$competence = $formation->getFormationCompetence();//
+      //  $competence = $competence->getId();//
         $manager->persist($formation);
         }
 
