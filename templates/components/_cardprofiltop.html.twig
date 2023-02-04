@@ -1,10 +1,10 @@
     <div class="row">
-      <div class="col-lg-3 pt-1">
+      <div class="col-lg-3 cardcontainer">
         <!-- Component -->
         <div class="card shadow">
-          <div class="card-body bg-primary">
+          <div class="card-body profilbody mt-5 bg-primary">
             <div class="d-flex justify-content-center">
-              <a href="#" class="avatar avatar-xl w-30 h-50">
+              <a href="#" class="avatar avatar-xl w-30 h-50 mt-3">
                 {% if is_granted('ROLE_ADMIN') %}
                 <img alt="profil avatar" src="{{ vich_uploader_asset(user) }}">
                 {% else %}
