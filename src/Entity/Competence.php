@@ -24,11 +24,13 @@ class Competence
     #[ORM\ManyToOne(inversedBy: 'competences')]
     private ?User $User = null;
 
-    #[ORM\OneToMany(mappedBy: 'competence', targetEntity: Experience::class)]
+    #[ORM\ManyToMany(targetEntity: Experience::class, mappedBy: 'Competence')]
     private Collection $experiences;
 
-    #[ORM\OneToMany(mappedBy: 'Competence', targetEntity: Formation::class)]
+    #[ORM\ManyToMany(targetEntity: Formation::class, mappedBy: 'Competence')]
     private Collection $formations;
+
+
 
     public function __construct()
     {
@@ -89,7 +91,7 @@ class Competence
     {
         if (!$this->experiences->contains($experience)) {
             $this->experiences->add($experience);
-            $experience->setCompetence($this);
+            $experience->addCompetence($this);
         }
 
         return $this;
@@ -98,10 +100,7 @@ class Competence
     public function removeExperience(Experience $experience): self
     {
         if ($this->experiences->removeElement($experience)) {
-            // set the owning side to null (unless already changed)
-            if ($experience->getCompetence() === $this) {
-                $experience->setCompetence(null);
-            }
+            $experience->removeCompetence($this);
         }
 
         return $this;
@@ -119,7 +118,7 @@ class Competence
     {
         if (!$this->formations->contains($formation)) {
             $this->formations->add($formation);
-            $formation->setCompetence($this);
+            $formation->addCompetence($this);
         }
 
         return $this;
@@ -128,10 +127,7 @@ class Competence
     public function removeFormation(Formation $formation): self
     {
         if ($this->formations->removeElement($formation)) {
-            // set the owning side to null (unless already changed)
-            if ($formation->getCompetence() === $this) {
-                $formation->setCompetence(null);
-            }
+            $formation->removeCompetence($this);
         }
 
         return $this;

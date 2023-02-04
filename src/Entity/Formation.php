@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\FormationRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,8 +34,14 @@ class Formation
     #[ORM\ManyToOne(inversedBy: 'formations')]
     private ?User $User = null;
 
-    #[ORM\ManyToOne(inversedBy: 'formations')]
-    private ?Competence $Competence = null;
+    #[ORM\ManyToMany(targetEntity: Competence::class, inversedBy: 'formations')]
+    private Collection $Competence;
+
+    public function __construct()
+    {
+        $this->Competence = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -112,15 +120,28 @@ class Formation
         return $this;
     }
 
-    public function getCompetence(): ?Competence
+    /**
+     * @return Collection<int, Competence>
+     */
+    public function getCompetence(): Collection
     {
         return $this->Competence;
     }
 
-    public function setCompetence(?Competence $Competence): self
+    public function addCompetence(Competence $competence): self
     {
-        $this->Competence = $Competence;
+        if (!$this->Competence->contains($competence)) {
+            $this->Competence->add($competence);
+        }
 
         return $this;
     }
+
+    public function removeCompetence(Competence $competence): self
+    {
+        $this->Competence->removeElement($competence);
+
+        return $this;
+    }
+
 }
