@@ -24,10 +24,17 @@ class Competence
     #[ORM\ManyToOne(inversedBy: 'competences')]
     private ?User $User = null;
 
+    #[ORM\ManyToOne(inversedBy: 'Competence')]
+    private ?Experience $experience = null;
+
+    #[ORM\ManyToOne(inversedBy: 'Competence')]
+    private ?Formation $formation = null;
+
+
 
     public function __construct()
     {
-      
+        $this->experience = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -67,6 +74,30 @@ class Competence
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    public function getExperience(): ?Experience
+    {
+        return $this->experience;
+    }
+
+    public function setExperience(?Experience $experience): self
+    {
+        $this->experience = $experience;
+
+        return $this;
+    }
+
+    public function getFormation(): ?Formation
+    {
+        return $this->formation;
+    }
+
+    public function setFormation(?Formation $formation): self
+    {
+        $this->formation = $formation;
 
         return $this;
     }

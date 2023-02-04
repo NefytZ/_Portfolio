@@ -35,10 +35,13 @@ class Experience
     #[ORM\ManyToOne(inversedBy: 'experiences')]
     private ?User $User = null;
 
+    #[ORM\OneToMany(mappedBy: 'experience', targetEntity: Competence::class)]
+    private Collection $Competence;
+
 
     public function __construct()
     {
-    
+        $this->Competence = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -114,6 +117,36 @@ class Experience
     public function setUser(?User $User): self
     {
         $this->User = $User;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Competence>
+     */
+    public function getCompetence(): Collection
+    {
+        return $this->Competence;
+    }
+
+    public function addCompetence(Competence $competence): self
+    {
+        if (!$this->Competence->contains($competence)) {
+            $this->Competence->add($competence);
+            $competence->setExperience($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCompetence(Competence $competence): self
+    {
+        if ($this->Competence->removeElement($competence)) {
+            // set the owning side to null (unless already changed)
+            if ($competence->getExperience() === $this) {
+                $competence->setExperience(null);
+            }
+        }
 
         return $this;
     }
