@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ExperienceRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -32,8 +34,13 @@ class Experience
     #[ORM\ManyToOne(inversedBy: 'experiences')]
     private ?User $User = null;
 
-    #[ORM\ManyToOne(inversedBy: 'experiences')]
-    private ?Competence $competence = null;
+    #[ORM\ManyToMany(targetEntity: Competence::class, inversedBy: 'experiences')]
+    private Collection $Competence;
+
+    public function __construct()
+    {
+        $this->Competence = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -112,15 +119,28 @@ class Experience
         return $this;
     }
 
-    public function getCompetence(): ?Competence
+    /**
+     * @return Collection<int, Competence>
+     */
+    public function getCompetence(): Collection
     {
-        return $this->competence;
+        return $this->Competence;
     }
 
-    public function setCompetence(?Competence $competence): self
+    public function addCompetence(Competence $competence): self
     {
-        $this->competence = $competence;
+        if (!$this->Competence->contains($competence)) {
+            $this->Competence->add($competence);
+        }
 
         return $this;
     }
+
+    public function removeCompetence(Competence $competence): self
+    {
+        $this->Competence->removeElement($competence);
+
+        return $this;
+    }
+
 }
