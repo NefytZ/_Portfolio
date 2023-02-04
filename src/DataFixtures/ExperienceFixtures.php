@@ -4,14 +4,11 @@ namespace App\DataFixtures;
 
 use DateTime;
 use App\Entity\Experience;
-use App\Entity\FormationCompetence;
-use App\Entity\Competence;
 use Doctrine\Persistence\ObjectManager;
 use Doctrine\Bundle\FixturesBundle\Fixture;
-use Symfony\Component\Filesystem\Filesystem;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\ORM\Mapping\Id;
+use Symfony\Component\Filesystem\Filesystem;
+
 
 class ExperienceFixtures extends Fixture implements DependentFixtureInterface
 {
@@ -32,17 +29,14 @@ class ExperienceFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         foreach (self::Experiences as $nameofposte => $details) {
-            $experience = new Experience();
-            $experience->setTitreposte($nameofposte);
-            $experience->setNomEntreprise($details[0]);
-            $experience->setDateDebut(new DateTime($details[1]));
-            $experience->setDateFin(new DateTime($details[2]));
-            $experience->setDescription($details[3]);
-            $experience->setUser($this->getReference('user_1'));
-
-           // $formationCompetence = new FormationCompetence();
-           // $manager->persist($formationCompetence);//
-            $manager->persist($experience);
+        $experience = new experience();
+        $experience->setTitreposte($nameofposte);
+        $experience->setNomEntreprise($details[0]);
+        $experience->setDateDebut(new DateTime($details[1]));
+        $experience->setDateFin(new DateTime($details[2]));
+        $experience->setDescription($details[3]);
+        $experience->setUser($this->getReference('user_1'));
+        $manager->persist($experience);
         }
 
         $manager->flush();
@@ -52,8 +46,6 @@ class ExperienceFixtures extends Fixture implements DependentFixtureInterface
     {
         return [
             UserFixtures::class,
-            CompetenceFixtures::class,
         ];
     }
 }
-

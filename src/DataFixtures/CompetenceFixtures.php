@@ -26,7 +26,6 @@ class CompetenceFixtures extends Fixture implements DependentFixtureInterface
     {
     }
 
-
     public function load(ObjectManager $manager): void
     {
         foreach (self::Competences as $name => $niveau) {
@@ -40,7 +39,6 @@ class CompetenceFixtures extends Fixture implements DependentFixtureInterface
         $manager->flush();
     }
 
-
     public function getDependencies()
     {
         return [
@@ -48,4 +46,3 @@ class CompetenceFixtures extends Fixture implements DependentFixtureInterface
         ];
     }
 }
-
