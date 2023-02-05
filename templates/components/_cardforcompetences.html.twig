@@ -1,13 +1,13 @@
-<div class="row">
+<div class="d-flex">
   {% for competence in competences %}
-  <div class="cards-list col">
+  <div class="cards-list">
   <div class="card_1">
-    <div class="card_image"> <img src="https://i.redd.it/b3esnz5ra34y.jpg" /> </div>
+    <div class="card_image"> <img src="{{ vich_uploader_asset(competence) }}" /> </div>
     <div class="card_title title-white">
       <p class="card-text fw-bold text-intermediate text-center fs-5 m-auto">{{competence.nom}}</p>
       <p class="card-text fw-bold text-intermediate m-auto text-center">{{competence.niveau}}</p>
       <p class="card-text fw-bold text-intermediate text-center">{{competence.experience.id}}</p>
-      <p class="card-text fw-bold text-intermediate text-center">{{competence.formation.id}}</p>
+      <p class="card-text fw-bold text-intermediate">{{competence.formation.id}}</p>
     </div>
     </div>
   </div>
