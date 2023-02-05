@@ -54,6 +54,9 @@ class Formation
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $formationPicture = null;
 
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $Link = null;
+
 
     public function __construct()
     {
@@ -192,6 +195,18 @@ class Formation
     public function getImageFile(): ?File
     {
         return $this->imageFile;
+    }
+
+    public function getLink(): ?string
+    {
+        return $this->Link;
+    }
+
+    public function setLink(?string $Link): self
+    {
+        $this->Link = $Link;
+
+        return $this;
     }
 
 }

@@ -4,28 +4,25 @@
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarText">
+    <div class="collapse navbar-collapse d-flex" id="navbarText">
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a class="nav-link active text-black" aria-current="page" href="/">Accueil</a>
+          <a class="nav-link fs-5 fw-bold ms-3" aria-current="page" href="/">Accueil</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_experience') }}">Expériences</a>
+          <a class="nav-link fs-5 fw-bold ms-3" href="{{ path('app_experience') }}">Expériences</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{{ path('app_formation') }}">Formations</a>
+          <a class="nav-link fs-5 fw-bold ms-3" href="{{ path('app_formation') }}">Formations</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ path('app_competence') }}">Compétences</a>
-        </li>
         <li class="nav-item">
-          <a class="nav-link" href="">Mes Projets</a>
+          <a class="nav-link fs-5 fw-bold ms-3" href="{{ path('app_my_project') }}">Mes Projets</a>
       </li>
       <li class="nav-item">
         {% if is_granted('ROLE_ADMIN') %}
-        <a class="nav-link" href="{{ path('app_admin') }}" class="text-primary fw-bold text-decoration-none p-2">Admin</a>
+        <a class="nav-link fs-5 fw-bold ms-3" href="{{ path('app_admin') }}" class="text-primary fw-bold text-decoration-none p-2">Admin</a>
         {% else %}
-        <a class="nav-link" href="{{ path('app_login') }}">Login</a>
+        <a class="nav-link fs-5 fw-bold ms-3" href="{{ path('app_login') }}">Login</a>
         {% endif %}
       </li>
     </ul>

@@ -24,7 +24,7 @@ class CompetenceCrudController extends AbstractCrudController
     {
         return [
             TextField::new('nom'),
-            TextEditorField::new('niveau'),
+            TextField::new('niveau'),
             TextField::new('competence_Picture')->setFormType(VichImageType::class)->onlyOnIndex(),
             ImageField::new('competencePicture')
             ->setBasePath('uploads/avatars')
