@@ -26,6 +26,7 @@ class ExperienceCrudController extends AbstractCrudController
             yield TextField::new('nom_entreprise'),
             yield DateField::new('date_debut'),
             yield DateField::new('date_fin'),
+            yield TextField::new('description'),
             yield TextField::new('experiencePicture')->setFormType(VichImageType::class)->onlyOnIndex(),
             yield ImageField::new('experience_picture')
             ->setBasePath('uploads/avatars')
