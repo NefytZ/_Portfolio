@@ -19,7 +19,7 @@ class CompetenceFixtures extends Fixture implements DependentFixtureInterface
         'Figma' => ' ⭐ ⭐ ⭐ ⭐ ⭐',
         'Javascript' => ' ⭐ ⭐ ⭐ ⭐ ⭐',
         'FinalCut' => ' ⭐ ⭐ ⭐ ⭐ ⭐',
-        'HTML & CSS (bootstrap, Tailwind..)' => ' ⭐ ⭐ ⭐ ⭐ ⭐',
+        'HTML & CSS' => ' ⭐ ⭐ ⭐ ⭐ ⭐',
     ];
 
     public function __construct(private Filesystem $filesystem)

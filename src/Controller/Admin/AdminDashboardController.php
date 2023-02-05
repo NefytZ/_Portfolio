@@ -41,7 +41,7 @@ class AdminDashboardController extends AbstractDashboardController
     public function configureMenuItems(): iterable
     {
         return [
-            MenuItem::linkToDashboard('Dashboard', 'fa fa-home'),
+            
 
             MenuItem::section('Portfolio'),
             MenuItem::linkToCrud('Experiences', 'fa fa-briefcase', Experience::class),
