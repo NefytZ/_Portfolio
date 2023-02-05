@@ -11,8 +11,13 @@
       <div class="card_title title-white">
         <p class="card-text fw-bold text-intermediate text-center fs-5 m-auto" style="margin: 0 auto;">{{competence.nom}}</p>
         <p class="card-text fw-bold text-intermediate m-auto text-center" style="margin: 0 auto;">{{competence.niveau}}</p>
+        {% if competence.experience is not null %}
         <p class="card-text fw-bold text-intermediate text-center" style="margin: 0 auto;">{{competence.experience.nomentreprise}}</p>
+        {% endif %}
+        
+        {% if competence.formation is not null %}
         <p class="card-text fw-bold text-intermediate text-center" style="margin: 0 auto;">{{competence.formation.nomEtablissement}}</p>
+        {% endif %}
       </div>
     </div>
   </div>
