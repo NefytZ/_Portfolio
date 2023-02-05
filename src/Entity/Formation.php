@@ -7,7 +7,13 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
+
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: FormationRepository::class)]
 class Formation
 {
@@ -36,6 +42,17 @@ class Formation
 
     #[ORM\OneToMany(mappedBy: 'formation', targetEntity: Competence::class)]
     private Collection $Competence;
+
+    #[Assert\File(
+        maxSize: '2M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp']
+    )]
+    #[Vich\UploadableField(mapping: "avatars", fileNameProperty: "formationPicture")]
+    #[Ignore]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $formationPicture = null;
 
 
     public function __construct()
@@ -151,5 +168,30 @@ class Formation
         return $this;
     }
 
+    public function getformationPicture(): ?string
+    {
+        return $this->formationPicture;
+    }
+
+    public function setformationPicture(?string $formationPicture): self
+    {
+        $this->formationPicture = $formationPicture;
+
+        return $this;
+    }
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+        if ($image) {
+            
+        }
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
+    }
 
 }
