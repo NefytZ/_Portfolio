@@ -8,7 +8,7 @@ use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Serializer\Annotation\Ignore;
-
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: ProjectRepository::class)]
 class Project
 {

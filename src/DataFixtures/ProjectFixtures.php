@@ -13,10 +13,10 @@ use Symfony\Component\Filesystem\Filesystem;
 class ProjectFixtures extends Fixture implements DependentFixtureInterface
 {
     public const Projects = [
-        'Projet A' => ['Description du projet A', 'https://github.com/NefytZ/projet-a'],
-        'Projet B' => ['Description du projet B', 'https://github.com/NefytZ/projet-b'],
-        'Projet C' => ['Description du projet C', 'https://github.com/NefytZ/projet-c'],
-        'Projet D' => ['Description du projet D', 'https://github.com/NefytZ/projet-d']
+        'Projet A' => ['Description du projet A', 'https://github.com/NefytZ/'],
+        'Projet B' => ['Description du projet B', 'https://github.com/NefytZ/'],
+        'Projet C' => ['Description du projet C', 'https://github.com/NefytZ/'],
+        'Projet D' => ['Description du projet D', 'https://github.com/NefytZ/']
     ];
 
     public function __construct(private Filesystem $filesystem)

@@ -2,6 +2,11 @@
     width: 300px;
     position: relative;
 
+
+    .img {
+      object-fit: cover;
+    }
+
     .header {
       margin: 0 auto;
       text-align: center;
