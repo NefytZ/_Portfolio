@@ -10,6 +10,7 @@ use App\Entity\Experience;
 use App\Repository\ExperienceRepository;
 use Container7aRvcPF\getExperienceService;
 use App\Controller\AdminExperienceController;
+use App\Entity\Project;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Dto\LocaleDto;
@@ -47,7 +48,7 @@ class AdminDashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Experiences', 'fa fa-briefcase', Experience::class),
             MenuItem::linkToCrud('Formations', 'fa fa-certificate', Formation::class),
             MenuItem::linkToCrud('Compétences', 'fa fa-book', Competence::class),
-            MenuItem::linkToCrud('Hobbies', 'fa fa-refresh', Hobbie::class),
+            MenuItem::linkToCrud('Project', 'fa fa-refresh', Project::class),
 
             MenuItem::section('Utilisateur'),
             MenuItem::linkToCrud('Thyphen', 'fa fa-address-card', User::class)
