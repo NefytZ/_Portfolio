@@ -9,8 +9,8 @@ use Symfony\Component\HttpFoundation\File\File;
 use App\Entity\Formation;
 use App\Entity\Experience;
 use Symfony\Component\Serializer\Annotation\Ignore;
-
 use Symfony\Component\Validator\Constraints as Assert;
+
 #[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: CompetenceRepository::class)]
 class Competence
@@ -122,9 +122,9 @@ class Competence
         return $this->competencePicture;
     }
 
-    public function setcompetencePicture(?string $userPicture): self
+    public function setcompetencePicture(?string $competencePicture): self
     {
-        $this->competencePicture = $userPicture;
+        $this->competencePicture = $competencePicture;
 
         return $this;
     }

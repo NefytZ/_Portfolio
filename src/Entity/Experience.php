@@ -7,8 +7,12 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-use App\Entity\FormationCompetence;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
+#[Vich\Uploadable]
 #[ORM\Entity(repositoryClass: ExperienceRepository::class)]
 class Experience
 {
@@ -38,6 +42,16 @@ class Experience
     #[ORM\OneToMany(mappedBy: 'experience', targetEntity: Competence::class)]
     private Collection $Competence;
 
+    #[Assert\File(
+        maxSize: '2M',
+        mimeTypes: ['image/jpeg', 'image/png', 'image/webp']
+    )]
+    #[Vich\UploadableField(mapping: "avatars", fileNameProperty: "experiencePicture")]
+    #[Ignore]
+    private ?File $imageFile = null;
+
+    #[ORM\Column(length: 255, nullable: true)]
+    private ?string $experiencePicture = null;
 
     public function __construct()
     {
@@ -149,6 +163,32 @@ class Experience
         }
 
         return $this;
+    }
+
+    public function getexperiencePicture(): ?string
+    {
+        return $this->experiencePicture;
+    }
+
+    public function setexperiencePicture(?string $experiencePicture): self
+    {
+        $this->experiencePicture = $experiencePicture;
+
+        return $this;
+    }
+
+    public function setImageFile(File $image = null)
+    {
+        $this->imageFile = $image;
+        if ($image) {
+            
+        }
+        return $this;
+    }
+
+    public function getImageFile(): ?File
+    {
+        return $this->imageFile;
     }
 
 }
