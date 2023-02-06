@@ -27,7 +27,7 @@ class FormationCrudController extends AbstractCrudController
             yield TextField::new('diplome'),
             yield DateField::new('date_debut'),
             yield DateField::new('date_fin'),
-            yield TextEditorField::new('description'),
+            yield TextField::new('description'),
             yield TextField::new('formationPicture')->setFormType(VichImageType::class)->onlyOnIndex(),
             yield ImageField::new('formation_picture')
             ->setBasePath('uploads/avatars')
