@@ -1,6 +1,10 @@
-# Base_Symfony_6
+Symfony 6 - PHP - TWIG - JS
 
-- composer install
-- yarn install
-- create the .env.local with your DATABASE_URL. You can copy/paste the .env
-- use the \_theme.scss as the root for your project style
+Une fois avoir cloner le projet run ces commandes pour pouvoir l'utiliser ->
+
+  composer install
+  yarn install
+  
+  Une fois ceci fais ->
+créez le .env.local avec votre DATABASE_URL. Vous pouvez copier/coller le .env
+
