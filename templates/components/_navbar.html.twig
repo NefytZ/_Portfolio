@@ -1,0 +1,33 @@
+<nav class="navbar navbar-expand-lg bg-secondary fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brandmine" href="/">
+      <img class="logo" src="/uploads/avatars/Portfoliologo.png" alt="Logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 text-center">
+        <li class="nav-item">
+          <a class="nav-link active fs-5 fw-bold ms-3" href="/" aria-current="page">Accueil</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-5 fw-bold ms-3" href="{{ path('app_experience') }}">Expériences</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-5 fw-bold ms-3" href="{{ path('app_formation') }}">Formations</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link fs-5 fw-bold ms-3" href="{{ path('app_my_project') }}">Mes Projets</a>
+        </li>
+        <li class="nav-item">
+          {% if is_granted('ROLE_ADMIN') %}
+            <a class="nav-link fs-5 fw-bold ms-3" href="{{ path('app_admin') }}" class="text-primary fw-bold text-decoration-none p-2">Admin</a>
+          {% else %}
+            <a class="nav-link fs-5 fw-bold ms-3" href="{{ path('app_login') }}">Login</a>
+          {% endif %}
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

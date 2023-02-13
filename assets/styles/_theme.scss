@@ -1,1 +1,35 @@
 //root
+
+// assets/styles/global.scss
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&family=Montserrat:ital,wght@0,400;0,700;1,100&display=swap");
+
+$font-family-body: "Cairo", sans-serif;
+$font-family-title: "Montserrat", sans-serif;
+
+$font-weight-body-title: bold;
+$font-weight-title: bold;
+
+// customize some Bootstrap variables
+$primary: #c5c8c8;
+$secondary: #2C6CBC;
+$light: #e4e4e4;
+$dark: #2a2a2a;
+$intermediate: #667985;
+$gray: #bdbdbd;
+$success: #5aaa18;
+$danger: #FF0F00;
+$tertiary: #fcfcfc;
+$warning: #d4c600;
+
+$theme-colors: (
+    "primary": $primary,
+    "secondary": $secondary,
+    "light": $light,
+    "dark": $dark,
+    "intermediate": $intermediate,
+    "gray": $gray,
+    "success": $success,
+    "danger": $danger,
+    "tertiary": $tertiary,
+    "warning": $warning,
+);

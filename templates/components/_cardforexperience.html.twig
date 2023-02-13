@@ -1,0 +1,27 @@
+<div class="d-flex">
+{% for experience in experiences %}
+<div class="container">
+  <div class="card bg-transparent mt-3">
+    <div class="face face1">
+      <div class="content">
+        <img class="" src="{{ vich_uploader_asset(experience) }}" alt="">
+        <h5 class="card-title text-light">{{experience.nomentreprise}}</h5>
+      </div>
+    </div>
+    <div class="face face2">
+      <div class="content">
+        <p class="card-text fw-bold text-intermediate">Titre du poste : {{experience.titreposte}}</p>
+        <p class="card-text fw-bold text-intermediate">Date de début : {{experience.dateDebut| date('Y-m-d')}}</p>
+        <p class="card-text fw-bold text-intermediate">Date de fin : {{experience.datefin| date('Y-m-d')}}</p>
+      </div>
+        <a href="{{ experience.link }}" class="btn btn-secondary rounded-pill w-40 m-auto mb-3">Voir plus</a>
+      </div>
+    <div class="face face2 bg-intermediate">
+      <div class="content p-0">
+        <p class="card-text fw-bold text-light text-center">{{experience.description}}</p>
+      </div>
+  </div>
+</div>
+</div>
+    {% endfor %}
+</div>

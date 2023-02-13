@@ -1,0 +1,25 @@
+<div class="container ContainertextCompoetence w-50">
+  <h1 class="text-light text-center mb-5">Mes Compétences</h1>
+ </div>
+<div class="row d-flex justify-content-center">
+  {% for competence in competences %}
+  <div class="cards-list col-lg-2 me-3 mb-5 pb-5 text-center">
+    <div class="card_1">
+      <div class="card_image"> 
+        <img class="" src="{{ vich_uploader_asset(competence) }}" alt="">
+      </div>
+      <div class="card_title title-white">
+        <p class="card-text fw-bold text-intermediate text-center fs-5 m-auto" style="margin: 0 auto;">{{competence.nom}}</p>
+        <p class="card-text fw-bold text-intermediate m-auto text-center" style="margin: 0 auto;">{{competence.niveau}}</p>
+        {% if competence.experience is not null %}
+        <p class="card-text fw-bold text-intermediate text-center" style="margin: 0 auto;">{{competence.experience.nomentreprise}}</p>
+        {% endif %}
+        
+        {% if competence.formation is not null %}
+        <p class="card-text fw-bold text-intermediate text-center" style="margin: 0 auto;">{{competence.formation.nomEtablissement}}</p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</div>

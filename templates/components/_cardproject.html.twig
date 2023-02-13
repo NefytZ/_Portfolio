@@ -1,0 +1,20 @@
+<div class="row d-flex justify-content-center">
+    {% for project in projects %}
+<div class="blog-slider col-6 text-center mt-5 w-75" style="margin-bottom: 20px;">
+    <div class="blog-slider__wrp swiper-wrapper">
+      <div class="blog-slider__item swiper-slide">
+        <div class="blog-slider__img">
+                <img class="" src="{{ vich_uploader_asset(project) }}"  alt="">
+              </div>
+        <div class="blog-slider__content">
+          <span class="blog-slider__code">26 December 2019</span>
+          <div class="blog-slider__title">{{project.titre}}</div>
+          <div class="blog-slider__text text-intermediate">{{project.description}}</div>
+          <a href="{{ project.url }}" class="blog-slider__button btn btn-secondary rounded-pill w-40 m-auto mb-3">Voir plus</a>
+        </div>
+      </div>
+    </div>
+    <div class="blog-slider__pagination"></div>
+</div>
+{% endfor %}
+</div>

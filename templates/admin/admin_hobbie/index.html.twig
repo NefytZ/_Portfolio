@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hobbie index{% endblock %}
+
+{% block body %}
+    <h1>Hobbie index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for hobbie in hobbies %}
+            <tr>
+                <td>{{ hobbie.id }}</td>
+                <td>{{ hobbie.Nom }}</td>
+                <td>{{ hobbie.Description }}</td>
+                <td>
+                    <a href="{{ path('app_admin_hobbie_show', {'id': hobbie.id}) }}">show</a>
+                    <a href="{{ path('app_admin_hobbie_edit', {'id': hobbie.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_admin_hobbie_new') }}">Create new</a>
+{% endblock %}

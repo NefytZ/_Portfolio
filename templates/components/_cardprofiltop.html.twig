@@ -1,0 +1,39 @@
+    <div class="row">
+      <div class="col-lg-3 cardcontainer">
+        <!-- Component -->
+        <div class="card shadow">
+          <div class="card-body profilbody mt-5 bg-primary">
+            <div class="d-flex justify-content-center">
+              <a href="#" class="avatar avatar-xl w-30 h-50 mt-3">
+                {% if is_granted('ROLE_ADMIN') %}
+                <img alt="profil avatar" src="{{ vich_uploader_asset(user) }}">
+                {% else %}
+                <img alt="profil avatar" src="https://media.istockphoto.com/id/1364105164/photo/hologram-human-head-deep-learning-and-artificial-intelligence-abstract-background.jpg?b=1&s=170667a&w=0&k=20&c=i9-oulHCR0LCxqzqUW2Q7bKt3RrdbCZU0OXqXV2gw-o=">
+                {% endif %}
+              </a>
+            </div>
+            <div class="text-center my-6">
+              <!-- Title -->
+              <a class="d-block h3 mb-0 text-decoration-none fs-3">{{ app.user ? app.user.nom : "Merigot" }}</a> 
+              <!-- Subtitle -->
+              <a class="d-block h5 mb-0 p-3 text-secondary text-decoration-none fs-2">{{ app.user ? app.user.prenom : "Thyphen" }}</a> 
+            </div>
+            <!-- Stats -->
+            <div class="d-flex">
+              <div class="col-4 text-center">
+                <a href="#" class="h4 font-bolder mb-0 text-decoration-none">Web</a>
+                <span class="d-block text-sm text-secondary">Developper</span>
+              </div>
+              <div class="col-4 text-center">
+                <a href="#" class="h4 font-bolder mb-0 text-decoration-none">Ui UX</a>
+                <span class="d-block text-sm text-secondary">Design</span>
+              </div>
+              <div class="col-4 text-center">
+                <a href="#" class="h4 font-bolder mb-0 text-decoration-none">Digital</a>
+                <span class="d-block text-sm text-secondary">Marketing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>

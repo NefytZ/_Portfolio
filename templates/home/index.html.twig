@@ -1,16 +1,20 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!
+{% block title %}
+	{{parent()}}
+	| Accueil
+{% endblock %}
+
+{% block stylesheets %}
+	{{parent()}}
+{% endblock %}
+
+{% block header %}
+{% include 'components/_cardprofiltop.html.twig' %}
 {% endblock %}
 
 {% block body %}
-	<div class="example-wrapper text-center">
-		<h1>Hello wilder !!✅</h1>
-
-		This friendly message is coming from:
-		<ul>
-			<a href="{{ path("app_logout") }}">Disconnect</a>
-		</ul>
-		
-	</div>
+{% include 'components/_presentationprofil.html.twig' %}
+{% include "components/_carouselhome.html.twig" %}
+{% include "components/_cardforcompetences.html.twig" %}
 {% endblock %}

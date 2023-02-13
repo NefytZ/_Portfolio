@@ -1,2 +1,47 @@
 @import "_theme";
 @import "~bootstrap/scss/bootstrap";
+
+
+
+body {
+    font-family: $font-family-body;
+    min-width:100%;
+    min-height: 100%;
+
+    background: url("/assets/images/abstract-luxury.jpg"),
+        linear-gradient(
+            0deg,
+            rgba($black, 1) 0%,
+            rgba($gray, 1) 50%,
+            rgba($black, 1) 100%
+        );
+    background-attachment: fixed;
+    color: $light;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: $font-family-title;
+    font-weight: $font-weight-title;
+}
+
+.content-wrapper {
+    width: 10px;
+    height: 10px;
+    background: url("/assets/images/abstract-luxury.jpg"),
+}
+
+
+
+@import "navbar";
+@import "cardprofiltop";
+@import "carouselhome";
+@import "cardforexperience";
+@import "cardforformation";
+@import "cardforcompetence";
+@import "cardforhobbie";
+@import "footersocial";
+@import "presentationprofil";
+@import "cardproject";
+
+
+
